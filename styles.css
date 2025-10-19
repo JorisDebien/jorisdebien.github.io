@@ -29,23 +29,24 @@ a:focus{outline:2px dashed var(--accent);outline-offset:3px}
 .container{max-width:var(--max-width);margin:0 auto;padding:24px;box-sizing:border-box}
 
 .site-header{
-  /* span the container width and center header content over the two-column layout */
+  /* span the container width; let the nav itself be constrained & centered */
   width:100%;
   box-sizing:border-box;
   margin-bottom:18px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  /* remove flex centering so nav's own max-width controls centering */
+  display:block;
 }
 
-/* center the nav items inside the header */
+/* center the nav items inside the header by constraining the nav and auto-margin */
 .top-nav{
   display:flex;
   gap:12px;
   font-size:14px;
-  margin-bottom:12px;
+  margin:0 auto 12px;       /* center the nav container horizontally */
   justify-content:center;
   align-items:center;
+  max-width:var(--max-width); /* keep nav centered and no wider than page */
+  padding:0 12px;            /* small horizontal padding so items don't touch edges */
 }
 .top-nav a{color:var(--muted)}
 
