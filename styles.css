@@ -38,7 +38,16 @@ a:focus{outline:2px dashed var(--accent);outline-offset:3px}
 .title{margin:6px 0;color:var(--muted)}
 .tagline{margin:0;color:var(--muted)}
 .hero-right{text-align:right}
-.headshot{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#6ad)}
+.headshot{
+  /* increased size and better fit */
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;    /* keeps aspect and fills the box for raster images */
+  display: block;
+  margin: 0 auto 12px;
+  background: linear-gradient(135deg,var(--accent),#6ad);
+}
 
 .layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;gap:var(--gap);max-width:var(--max-width);width:100%}
 .sidebar{border-right:1px solid #eee;padding-right:var(--gap)}
