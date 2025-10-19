@@ -18,26 +18,28 @@
       <a href="#projects">Projects</a>
       <a href="#education">Education</a>
     </nav>
+  </header>
 
-    <div class="hero">
-      <div class="hero-left">
+  <main class="layout" role="main">
+    <!-- Sidebar: headshot, contacts, personal details, skills -->
+    <aside class="sidebar" aria-label="Contact and skills">
+      <div class="profile">
+        <img src="assets/headshot.svg" alt="Headshot of Joris Debien" class="headshot">
         <h1 class="name">Joris Debien</h1>
         <p class="title">Experienced engineering leader</p>
         <p class="tagline">Building high-performing teams and shipping reliable, measurable outcomes.</p>
       </div>
-      <div class="hero-right">
-        <img src="assets/headshot.svg" alt="Headshot" class="headshot">
-        <p class="contact">
-          <a href="mailto:jorisdebien@gmail.com">jorisdebien@gmail.com</a> ·
-          <a href="https://www.linkedin.com/in/jorisdebien" target="_blank" rel="noopener">LinkedIn</a> ·
-          <a href="https://github.com/JorisDebien" target="_blank" rel="noopener">GitHub</a>
-        </p>
-      </div>
-    </div>
-  </header>
 
-  <main class="layout">
-    <aside class="sidebar" aria-label="Quick info">
+      <section id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact</h2>
+        <ul class="contact-list">
+          <li><a href="mailto:jorisdebien@gmail.com">jorisdebien@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/jorisdebien" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/JorisDebien" target="_blank" rel="noopener">GitHub</a></li>
+          <li>Location: Brussels, BE</li>
+        </ul>
+      </section>
+
       <section id="metrics" aria-labelledby="metrics-heading">
         <h2 id="metrics-heading">Highlights</h2>
         <ul class="metrics">
@@ -53,6 +55,7 @@
       </section>
     </aside>
 
+    <!-- Main content: summary, experience, projects, education -->
     <section class="content" aria-label="Main content">
       <section id="summary">
         <h2>Professional summary</h2>
@@ -65,7 +68,7 @@
       <section id="experience">
         <h2>Experience</h2>
 
-        <!-- recent roles (valid HTML: only <li> inside <ol>) -->
+        <!-- recent roles -->
         <ol class="roles" aria-label="Roles">
           <li class="role" data-index="0">
             <article>
@@ -121,8 +124,7 @@
           </li>
         </ol>
 
-        <!-- older roles moved outside the main <ol> so HTML is valid.
-             Visible by default (no-JS). JS will collapse them and toggle aria-hidden. -->
+        <!-- older roles (collapsible via JS) -->
         <div id="older-roles" class="collapsible" data-collapsible-group="experience" role="region" aria-labelledby="older-roles-heading" aria-hidden="false">
           <h3 id="older-roles-heading" class="visually-hidden">Older roles</h3>
           <ol class="roles older">
@@ -152,14 +154,18 @@
           </ol>
         </div>
 
-        <!-- Toggle control is hidden by default for no-JS; when JS runs it becomes visible.
-             aria-expanded="true" reflects that by default content is visible without JS. -->
         <div class="toggle-wrap">
           <button class="collapse-toggle" aria-expanded="true" aria-controls="older-roles" type="button">
             Show more
             <span class="chev" aria-hidden="true">▾</span>
           </button>
         </div>
+      </section>
+
+      <section id="education">
+        <h2>Education & Certifications</h2>
+        <p>BS Computer Science — University X</p>
+        <p>Certified: AWS Certified Solutions Architect (Optional)</p>
       </section>
 
       <section id="leadership">
@@ -178,21 +184,14 @@
           <p>Led migration to new platform — reduced release time by 35% and decreased incidents by 22%.</p>
         </article>
       </section>
-
-      <section id="education">
-        <h2>Education & Certifications</h2>
-        <p>BS Computer Science — University X</p>
-        <p>Certified: AWS Certified Solutions Architect (Optional)</p>
-      </section>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>Contact: <a href="mailto:you@example.com">you@example.com</a> · <a href="#" onclick="window.print();return false">Print / PDF</a></p>
+    <p>Contact: <a href="mailto:jorisdebien@gmail.com">jorisdebien@gmail.com</a> · <a href="#" onclick="window.print();return false">Print / PDF</a></p>
     <p>&copy; 2025 — Minimal resume. Privacy: no tracking.</p>
   </footer>
 
-  <!-- Fixed script path to match actual file (website/website.js) -->
   <script src="website.js" defer></script>
 </body>
 </html>
