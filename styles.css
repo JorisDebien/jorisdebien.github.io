@@ -53,6 +53,32 @@ h2{font-size:18px;margin-bottom:8px}
 .role{padding:12px 0;border-bottom:1px solid #f1f1f1}
 .meta{color:var(--muted);font-size:13px;margin:4px 0 8px}
 
+
+/* Chips: small tag-like UI for skill lists */
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0;
+  padding:0;
+  font-size:13px;
+  line-height:1;
+  align-items:center;
+}
+
+/* Individual chip element (use <span class="chip">...</span> inside .chips) */
+.chips .chip{
+  display:inline-block;
+  background: #f1f5f9;
+  color: var(--text);
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(15,23,42,0.06);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  white-space:nowrap;
+}
+
+
 .toggle-wrap{margin-top:12px}
 .collapse-toggle{
   display:none; /* hidden unless JS enabled */
