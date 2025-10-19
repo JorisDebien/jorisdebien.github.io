@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Software Engineering Manager — concise single-page resume" />
+  <title>Software Engineering Manager — Resume</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="top-nav" aria-label="Primary">
+      <a href="#summary">Summary</a>
+      <a href="#experience">Experience</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-left">
+        <h1 class="name">Firstname Lastname</h1>
+        <p class="title">Software Engineering Manager — Location</p>
+        <p class="tagline">Building high-performing teams and shipping reliable, measurable outcomes.</p>
+      </div>
+      <div class="hero-right">
+        <img src="assets/headshot.svg" alt="Headshot" class="headshot">
+        <p class="contact">
+          <a href="mailto:you@example.com">you@example.com</a> ·
+          <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a> ·
+          <a href="https://github.com/yourprofile" target="_blank" rel="noopener">GitHub</a>
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar" aria-label="Quick info">
+      <section id="metrics" aria-labelledby="metrics-heading">
+        <h2 id="metrics-heading">Highlights</h2>
+        <ul class="metrics">
+          <li><strong>3</strong> teams led</li>
+          <li><strong>25+</strong> engineers hired</li>
+          <li><strong>40%</strong> cycle-time reduction</li>
+        </ul>
+      </section>
+
+      <section id="skills" aria-labelledby="skills-heading">
+        <h2 id="skills-heading">Skills</h2>
+        <p class="chips">Leadership, Hiring, OKRs, Architecture, CI/CD, Observability, Cloud (AWS)</p>
+      </section>
+    </aside>
+
+    <section class="content" aria-label="Main content">
+      <section id="summary">
+        <h2>Professional summary</h2>
+        <p>
+          Engineering leader with experience scaling product organizations (3–4 teams, 20–60 engineers).
+          Focused on hiring, mentorship, and delivery improvements — enabling cross-functional teams to reduce cycle time and increase throughput.
+        </p>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+
+        <!-- recent roles (valid HTML: only <li> inside <ol>) -->
+        <ol class="roles" aria-label="Roles">
+          <li class="role" data-index="0">
+            <article>
+              <header>
+                <h3>Company A — Senior Engineering Manager</h3>
+                <p class="meta">Jan 2023 — Present · 3 teams · 45 engineers</p>
+              </header>
+              <ul>
+                <li>Led platform migration that reduced release time by 35%.</li>
+                <li>Introduced hiring pipeline and interview kit, hiring 15 engineers in 12 months.</li>
+                <li>Implemented OKRs to align cross-functional priorities.</li>
+              </ul>
+            </article>
+          </li>
+
+          <li class="role" data-index="1">
+            <article>
+              <header>
+                <h3>Company B — Engineering Manager</h3>
+                <p class="meta">Jun 2020 — Dec 2022 · 2 teams · 20 engineers</p>
+              </header>
+              <ul>
+                <li>Reduced mean time to recovery by 40% through observability and runbook work.</li>
+                <li>Structured mentorship program improving retention by 12% year-over-year.</li>
+                <li>Led cross-team roadmap planning with Product and Design.</li>
+              </ul>
+            </article>
+          </li>
+
+          <li class="role" data-index="2">
+            <article>
+              <header>
+                <h3>Company C — Tech Lead</h3>
+                <p class="meta">Jan 2018 — May 2020</p>
+              </header>
+              <ul>
+                <li>Architected microservice boundaries and migration plan to reduce coupling.</li>
+                <li>Automated CI/CD reducing release friction and rollbacks.</li>
+              </ul>
+            </article>
+          </li>
+
+          <li class="role" data-index="3">
+            <article>
+              <header>
+                <h3>Company D — Senior Software Engineer</h3>
+                <p class="meta">Jun 2016 — Dec 2017</p>
+              </header>
+              <ul>
+                <li>Developed customer-facing KPI dashboards adopted by product leadership.</li>
+              </ul>
+            </article>
+          </li>
+        </ol>
+
+        <!-- older roles moved outside the main <ol> so HTML is valid.
+             Visible by default (no-JS). JS will collapse them and toggle aria-hidden. -->
+        <div id="older-roles" class="collapsible" data-collapsible-group="experience" role="region" aria-labelledby="older-roles-heading" aria-hidden="false">
+          <h3 id="older-roles-heading" class="visually-hidden">Older roles</h3>
+          <ol class="roles older">
+            <li class="role" data-index="4">
+              <article>
+                <header>
+                  <h3>Company E — Software Engineer</h3>
+                  <p class="meta">2014 — 2016</p>
+                </header>
+                <ul>
+                  <li>Worked on backend services and performance improvements.</li>
+                </ul>
+              </article>
+            </li>
+
+            <li class="role" data-index="5">
+              <article>
+                <header>
+                  <h3>Company F — Junior Developer</h3>
+                  <p class="meta">2012 — 2014</p>
+                </header>
+                <ul>
+                  <li>Initial engineering work and testing improvements.</li>
+                </ul>
+              </article>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Toggle control is hidden by default for no-JS; when JS runs it becomes visible.
+             aria-expanded="true" reflects that by default content is visible without JS. -->
+        <div class="toggle-wrap">
+          <button class="collapse-toggle" aria-expanded="true" aria-controls="older-roles" type="button">
+            Show more
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="leadership">
+        <h2>Leadership & Org</h2>
+        <ul>
+          <li><strong>Team building:</strong> Built multi-discipline teams, reduced time-to-hire.</li>
+          <li><strong>Mentorship:</strong> Structured career ladders and regular calibration sessions.</li>
+          <li><strong>Process:</strong> Improved sprint predictability and delivery cadence.</li>
+        </ul>
+      </section>
+
+      <section id="projects">
+        <h2>Selected projects</h2>
+        <article>
+          <h3>Platform migration</h3>
+          <p>Led migration to new platform — reduced release time by 35% and decreased incidents by 22%.</p>
+        </article>
+      </section>
+
+      <section id="education">
+        <h2>Education & Certifications</h2>
+        <p>BS Computer Science — University X</p>
+        <p>Certified: AWS Certified Solutions Architect (Optional)</p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Contact: <a href="mailto:you@example.com">you@example.com</a> · <a href="#" onclick="window.print();return false">Print / PDF</a></p>
+    <p>&copy; 2025 — Minimal resume. Privacy: no tracking.</p>
+  </footer>
+
+  <!-- Fixed script path to match actual file (website/website.js) -->
+  <script src="website.js" defer></script>
+</body>
+</html>
