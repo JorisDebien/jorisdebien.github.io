@@ -20,12 +20,13 @@ body{
   line-height:1.4;
   padding:24px;
   display:flex;
-  justify-content:center;
+  flex-direction:column; /* changed: stack header above main */
+  align-items:center;    /* center the page content horizontally */
 }
 a{color:var(--accent);text-decoration:none}
 a:focus{outline:2px dashed var(--accent);outline-offset:3px}
 
-.container{max-width:var(--max-width);margin:0 auto}
+.container{max-width:var(--max-width);margin:0 auto;padding:24px;box-sizing:border-box}
 
 .site-header{max-width:var(--max-width);width:100%;margin-bottom:18px}
 .top-nav{display:flex;gap:12px;font-size:14px;margin-bottom:12px}
