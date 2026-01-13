@@ -1,148 +1,331 @@
-# Resume Website — Specs
+# Personal Website React Specs
 
-Purpose
-- Single-page, professional resume-style website for a Software Engineering Manager.
-- Present contact info, career history, leadership & org impact, and technical skills clearly and quickly.
-- Clean, modern, print-friendly, and accessible — built primarily with HTML and CSS, with optional JavaScript for enhanced interactivity.
+## Project Overview
+- **Framework**: Plain React with client-side routing
+- **Routing**: Separate routes for each page (/, /career, /skills)
+- **Data**: Static CSV files imported at build time
+- **Design**: Clean, minimal design system with mobile-first responsive approach
+- **Styling**: No specific framework requirement (CSS, inline styles, or basic CSS-in-JS)
 
-Constraints
-- Primary content and layout must work with HTML + CSS. JavaScript is allowed specifically to implement expand/collapse and related accessible interactivity in the career section (progressive enhancement).
-- All content must appear on one HTML page (single scrollable document). Collapsed content must remain in the DOM and be discoverable without JS (i.e., visible by default or accessible via CSS-only fallback).
-- No external JS frameworks. Prefer small, vanilla JavaScript modules. Web-safe fonts or simple Google Fonts allowed if linked in HTML header.
-- Target modern browsers; responsive down to 320px width.
-- Keep bundle small (images optimized / optional). Any JS should be tiny and defer/non-blocking.
+---
 
-Content and Information Architecture (single page)
-1. Meta + Header
-   - Title, description, viewport meta.
-   - Top nav (anchor links to sections).
-   - Prominent name, title (Software Engineering Manager), location, contact links (email, LinkedIn, GitHub), one-line tagline.
+## Design System
 
-2. Professional Summary
-   - 2–4 sentence summary emphasizing leadership style, scope (team size, org layers), domain, and impact metrics.
+### Typography
+- **Font**: System fonts or a single web font (e.g., Inter, Roboto)
+- **Headings**: 
+  - H1: 32px/2rem (mobile: 24px/1.5rem)
+  - H2: 24px/1.5rem (mobile: 20px/1.25rem)
+  - H3: 20px/1.25rem
+- **Body**: 16px/1rem
+- **Small**: 14px/0.875rem
 
-3. Core Metrics / Highlights
-   - Compact stats row (e.g., "Led 3 teams • Hired 25+ engineers • 40% cycle-time reduction").
-   - Use semantic HTML (ul/li) and visually emphasize numbers.
+### Spacing Scale
+- `xs`: 4px (0.25rem)
+- `sm`: 8px (0.5rem)
+- `md`: 16px (1rem)
+- `lg`: 24px (1.5rem)
+- `xl`: 32px (2rem)
+- `2xl`: 48px (3rem)
 
-4. Experience (chronological, condensed)
-   - For each role: company, title, dates, 3–6 bullet points.
-   - Focus on leadership outcomes: team size, org changes, delivery improvements, hiring/retention, cross-functional work, measurable results (percentages, time saved, revenue impact).
-   - Limit visible roles to 4 on first render; older roles can be collapsed. Expand/collapse may be implemented with CSS-only techniques or enhanced with JavaScript (preferred for better accessibility and state handling).
+### Colors (Basic Palette)
+- **Primary**: Dark text (#1a1a1a) on light backgrounds
+- **Secondary**: Gray (#666)
+- **Accent**: Optional single accent color for interactive elements
+- **Border**: Light gray (#e0e0e0)
+- **Background**: White or off-white (#f9f9f9)
 
-5. Leadership & Org Skills
-   - Sections: Team building & hiring, Mentorship & career growth, Process & delivery (Agile/SDLC), Cross-functional communication, Strategy & roadmap.
-   - Short descriptive bullets or mini-case examples.
+### Responsive Breakpoints
+- **Mobile**: < 640px
+- **Tablet**: 640px - 1024px
+- **Desktop**: > 1024px
 
-6. Technical & Management Skillset (sidebar or distinct block)
-   - Engineering skills: languages, platforms, architecture patterns.
-   - Management skills: hiring, performance reviews, OKRs, scaling orgs.
-   - Tools: CI/CD, observability, project management, cloud providers.
-   - Use comma lists or tag-like chips for quick scanning.
+---
 
-7. Selected Projects / Case Studies (2–3)
-   - Title, short description, role, outcome (metric-driven).
-   - Emphasize decisions made & impact rather than implementation details.
+## Page Specs
 
-8. Education & Certifications
-   - Short list (institution, degree, year if desired).
-   - Relevant certifications (e.g., cloud certs, management training).
+### 1. Homepage (`/`)
 
-9. Footer / Action
-   - Call to contact (email), downloadable PDF link (print CSS + mailto + link to print-friendly view).
-   - Copyright & minimal privacy note.
+#### Purpose
+Introduce Joris Debien with a professional headshot, name, and links to social profiles and other pages.
 
-JavaScript: Expand/Collapse (requirements)
-- Purpose: allow users to expand/collapse older career entries to reduce visual clutter while keeping content discoverable.
-- Progressive enhancement:
-  - Page must be fully usable without JS: collapsed sections should either be visible by default or a CSS-only fallback must exist (e.g., show first N entries, with remaining content visible but styled).
-  - When JS is enabled, enhance UX by collapsing older entries and adding controls to expand them.
-- Accessibility:
-  - Use semantic buttons for toggles (not anchors or divs).
-  - Toggle buttons must include aria-expanded and aria-controls attributes.
-  - Collapsible content must use id attributes referenced by aria-controls.
-  - Manage focus appropriately when expanding/collapsing (focus remains on the toggle or moves into revealed content as appropriate).
-  - Keyboard operable (Enter/Space activate toggles).
-  - Ensure reduced-motion preference respected for any transitions (respect prefers-reduced-motion).
-- Behavior:
-  - Default: show latest 3–5 roles; collapse the rest.
-  - Controls: a single "Show more" / "Show less" per collapsed group or per role depending on visual design.
-  - Optionally persist user preference in sessionStorage/localStorage (non-essential).
-  - Keep JS small (<5–10 KB gzipped if possible) and modular (e.g., js/main.js).
-- CSS hooks:
-  - Use clear classes and data-attributes for JS to target (e.g., .collapsible, .is-collapsed, data-collapsible-group).
-  - Provide visual indicators (chevron icons) that rotate when expanded; icons can be inline SVG.
-- Print & SEO:
-  - Print stylesheet must expand all collapsed sections for a complete resume printout.
-  - Collapsed content must still be present in DOM so search engines and assistive tech can access it.
+#### Components
+- `HomePage` (main page component)
+  - `Header` (contains headshot, name, social links)
+  - `Navigation` (links to Career and Skills pages)
 
-Visual & Layout Guidelines
-- Overall style: minimal, high contrast, professional.
-- Grid: two-column layout on desktop — left column 28–32% (contact, skills, quick stats), right column 68–72% (main content). Collapse to single column on small screens.
-- Typographic scale:
-  - Font-family: system stack or one professional sans-serif (e.g., Inter / Roboto).
-  - Name: large, bold (28–36px desktop). Section headings: medium-bold (16–20px).
-  - Body text: 14–16px with 1.4 line-height.
-- Spacing: generous whitespace; clear separation between sections (padding/margins).
-- Colors:
-  - Neutral background (white / very light gray).
-  - Primary text: #111 / #222.
-  - Accent color: single muted accent (blue/teal) for links, chips, and stats.
-  - Use subtle borders or dividers for section breaks.
-- Visual cues:
-  - Use subtle chips / badges for skills.
-  - Use horizontal rule or left border to differentiate sidebar.
-  - Minimal icons (SVG inline if needed) — avoid images for essential info.
+#### Data Structure
+```javascript
+const profile = {
+  name: "Joris Debien",
+  headshot: "/assets/headshot.svg",
+  social: [
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/jorisdebien/" },
+    { label: "Github", url: "https://github.com/JorisDebien/" }
+  ]
+}
+```
 
-Accessibility & Print
-- Semantic HTML (header, main, nav, section, article, footer).
-- Sufficient color contrast (WCAG AA).
-- Keyboard navigable anchors; focus styles visible.
-- Provide print stylesheet:
-  - Hide non-essential UI (nav), stack to single column, ensure page breaks make sense.
-  - Set link URLs to show next to link text for printed PDF.
-  - Ensure collapsed sections are expanded in print view.
+#### Layout
+- Centered column layout
+- Headshot: 200px diameter on desktop, 150px on mobile, circular (border-radius: 50%) with SVG centered
+- Name prominently displayed below headshot
+- Social links displayed as logo icons (LinkedIn logo and GitHub logo) with 20px gap between them
+- Navigation links to Career and Skills pages below social links with rounded buttons (border-radius: 8px)
+- Vertical padding: `xl` (32px) on desktop, `lg` (24px) on mobile
+- Max width: 600px centered
 
-Responsive Behavior
-- Breakpoint examples: <= 768px collapse to single column and reduce typographic scale.
-- Ensure contact methods remain prominent on mobile (sticky header optional).
-- Expand/collapse controls must be easy to tap on mobile.
+#### Responsive Behavior
+- **Mobile** (< 640px):
+  - Single column, centered
+  - Headshot: 150px circular with centered SVG
+  - Padding: 24px horizontal, 32px vertical
+  - Social links display as logos horizontally with gap
+  - Navigation buttons full width, stacked vertically, rounded (8px)
+  
+- **Desktop** (≥ 640px):
+  - Single column, centered
+  - Headshot: 200px circular with centered SVG
+  - Padding: 48px horizontal, 64px vertical
+  - Navigation buttons auto width, side-by-side, rounded (8px)
 
-Microcopy & Tone
-- Professional, concise, outcome-focused.
-- Use active verbs and numbers for impact.
-- Keep personal anecdote minimal — prioritize quantified leadership outcomes.
+#### Accessibility
+- Use semantic HTML (`<header>`, `<nav>`)
+- Image alt text: "Joris Debien"
+- Link text is descriptive (avoid generic "click here")
+- Adequate color contrast for all text
 
-Deliverables (what the repo/page should contain)
-- index.html — single page with all content & links to styles.
-- styles.css — single stylesheet, well-organized with comments and sections (variables, layout, components).
-- js/main.js — small vanilla JS module implementing expand/collapse and optional state persistence.
-- optional assets/ (optimized headshot, inline SVG icons).
-- print.css (or media queries inside styles.css) for print-friendly output.
+#### Styling Approach
+- Flexbox for centering and spacing
+- Simple CSS classes or inline styles
+- No complex animations
 
-Acceptance Criteria
-- Single index.html + CSS; optional JS lives in js/main.js and enhances expand/collapse in the career section.
-- Page is responsive and readable on mobile and desktop.
-- Uses semantic HTML, accessible contrast, and keyboard navigation.
-- Key metrics and 3–5 experience entries visible without scrolling past fold on desktop.
-- Expand/collapse works when JS is enabled, and content remains accessible when JS is disabled.
-- Print-friendly output expands all sections for a neat PDF resume via browser Print.
+---
 
-Example minimal HTML structure (for reference)
-- header: name, title, contact
-- main:
-  - aside (left column): skills, contact, metrics
-  - section (right column): summary, experience, leadership, projects, education
-- footer: contact CTA
+### 2. Career Page (`/career`)
 
-Notes & constraints for authoring content
-- Keep each bullet in experience to one line where possible; no dense paragraphs.
-- Use consistent date format (e.g., "Jan 2020 — Present").
-- Prefer metrics in (%) or absolute numbers; avoid vague claims.
+#### Purpose
+Display career history as a list of collapsible cards, each showing job title, company, timeline, and description.
 
-Estimated effort
-- HTML + CSS implementation: 2–6 hours depending on polish and print stylesheet.
+#### Components
+- `CareerPage` (main page component)
+- `CareerCard` (individual collapsible card)
+  - Props: `title`, `subtitle`, `description`, `isOpen`, `onToggle`
 
-Versioning / Future enhancements (out of scope)
-- Provide JSON-LD for resume schema for SEO.
-- Multiple theme support (light/dark).
+#### Data Source
+Import and parse `assets/career.csv`:
+```
+Title;Company;From;To;Description
+Senior Engineering Manager;Cluepoints;jan/24;Present;Leading the charge...
+Engineering Manager;Cluepoints;sep/22;jan/24;In charge of three...
+```
+
+Parsed structure:
+```javascript
+const careers = [
+  {
+    id: 0,
+    title: "Senior Engineering Manager",
+    company: "Cluepoints",
+    from: "jan/24",
+    to: "Present",
+    description: "Leading the charge in continuous improvement..."
+  },
+  // ... more entries
+]
+```
+
+#### State Management
+```javascript
+const [openCards, setOpenCards] = useState([]);
+
+const toggleCard = (id) => {
+  setOpenCards(prev => 
+    prev.includes(id) 
+      ? prev.filter(cardId => cardId !== id)
+      : [...prev, id]
+  );
+};
+```
+
+Multiple cards can be open at the same time.
+
+#### Card Layout
+- **Title Section** (always visible):
+  - Title: "{Title} at {Company}" (bold, 18px)
+  - Subtitle: "{From} - {To}" (secondary color, 14px)
+  - Padding: `md` (16px)
+  - Background: light gray (#f9f9f9)
+  - Border: 1px solid #e0e0e0
+  - Border-radius: 8px
+  - Cursor: pointer, hover state (slight background change)
+
+- **Content Section** (hidden when collapsed):
+  - Description text: 16px line-height 1.5
+  - Padding: `md` (16px)
+  - Background: white
+  - Border: 1px solid #e0e0e0 (bottom and sides)
+  - Border-top: none
+  - Border-radius: 0 0 8px 8px
+
+#### Responsive Behavior
+- **Mobile** (< 640px):
+  - Card width: 100%
+  - Padding on container: `md` (16px)
+  - Title/subtitle font sizes: 16px / 12px
+  - Stack cards vertically with `md` (16px) gap
+
+- **Desktop** (≥ 640px):
+  - Max-width container: 800px
+  - Padding on container: `xl` (32px)
+  - Title/subtitle font sizes: 18px / 14px
+  - Gap between cards: `lg` (24px)
+
+#### Accessibility
+- Use semantic HTML (`<button>` or `<div role="button">`)
+- `aria-expanded` on toggle element
+- Keyboard navigation (Enter/Space to toggle)
+- Sufficient color contrast
+- Focus indicators on interactive elements
+
+#### Styling Approach
+- Card: border, rounded corners, shadow optional
+- Hover state on title section
+- No animations, but transitions acceptable (opacity, max-height)
+
+---
+
+### 3. Skills Page (`/skills`)
+
+#### Purpose
+Display a clean list of skills with descriptions as collapsible cards.
+
+#### Components
+- `SkillsPage` (main page component)
+- `SkillCard` (individual collapsible card component)
+
+#### Data Source
+Import and parse `assets/skills.csv`:
+```
+Skills;Description
+People management;I've managed small and large teams...
+Software testing;...
+Systems thinking;...
+```
+
+Parsed structure:
+```javascript
+const skills = [
+  {
+    id: 0,
+    skill: "People management",
+    description: "I've managed small and large teams..."
+  },
+  // ... more entries
+]
+```
+
+#### State Management
+```javascript
+const [openCards, setOpenCards] = useState([]);
+
+const toggleCard = (id) => {
+  setOpenCards(prev => 
+    prev.includes(id) 
+      ? prev.filter(cardId => cardId !== id)
+      : [...prev, id]
+  );
+};
+```
+
+Multiple cards can be open at the same time.
+
+#### Card Layout
+- **Title Section** (always visible):
+  - Skill name (bold, 16px)
+  - Padding: `md` (16px)
+  - Background: light gray (#f5f5f5)
+  - Border: 1px solid #e0e0e0
+  - Border-radius: 8px
+  - Cursor: pointer, hover state (background #e8e8e8)
+
+- **Content Section** (hidden when collapsed):
+  - Description text: 14px line-height 1.6
+  - Padding: `md` (16px)
+  - Background: white
+  - Border: 1px solid #e0e0e0 (bottom and sides)
+  - Border-top: none
+  - Border-radius: 0 0 8px 8px
+
+#### Layout
+- Vertical list of skill cards
+- Max-width: 700px
+- Gap between cards: 15px
+
+#### Responsive Behavior
+- **Mobile** (< 640px):
+  - Single column list
+  - Full width with `md` (16px) padding
+  - Vertical gap: `md` (16px)
+  - Card title: 14px
+  - Card description: 13px
+
+- **Desktop** (≥ 640px):
+  - Single column list
+  - Max-width: 700px
+  - Vertical gap: 15px
+  - Card title: 16px
+  - Card description: 14px
+
+#### Accessibility
+- Use semantic HTML (`<button>` or `<div role="button">`)
+- `aria-expanded` on toggle element
+- Keyboard navigation (Enter/Space to toggle)
+- Sufficient color contrast
+- Focus indicators on interactive elements
+
+#### Styling Approach
+- Card: border, rounded corners (8px)
+- Hover state on title section
+- No animations, but transitions acceptable
+
+---
+
+## Global Considerations
+
+### CSV Parsing
+- Use a CSV parser library (e.g., `papaparse`, `csv-parser`) or manual parsing
+- Handle optional/empty fields gracefully
+- Parse at build time or during initial component load
+
+### Routing
+- Use React Router or a simple hash-based router
+- Clear navigation between pages
+- Active link indication in navigation
+
+### File Structure
+```
+src/
+  components/
+    HomePage.jsx
+    CareerPage.jsx
+    SkillsPage.jsx
+    CareerCard.jsx
+    SkillsList.jsx
+    Navigation.jsx
+  pages/
+    (or route handlers)
+  data/
+    career.js (parsed CSV)
+    skills.js (parsed CSV)
+  styles/
+    (if using separate CSS files)
+  App.jsx
+  index.js
+```
+
+### Performance
+- Static data imports (no runtime API calls)
+- Minimal re-renders (use `useCallback` for event handlers if needed)
+- No image optimization required (SVG headshot)
+

@@ -1,0 +1,60 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px;
+}
+
+.content {
+  max-width: 700px;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.backLink {
+  font-size: 14px;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.backLink:hover {
+  color: #0066cc;
+}
+
+.backLink:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.pageTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  line-height: 1.2;
+}
+
+.cardsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .container {
+    padding: 40px;
+  }
+
+  .content {
+    padding-top: 40px;
+  }
+
+  .pageTitle {
+    font-size: 32px;
+  }
+}
